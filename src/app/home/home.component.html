@@ -1,0 +1,13 @@
+
+  <!-- Content -->
+
+  <div class="center_content">
+    <div class="flex-container">
+      <div *ngFor="let item of data">
+        <div class="content" [routerLink]="item.navigate">
+          <img [src]="item.img_path" height="50%" alt="" />
+          <h3>{{ item.text }}</h3>
+        </div>
+      </div>
+    </div>
+  </div>

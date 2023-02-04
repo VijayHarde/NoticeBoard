@@ -1,0 +1,84 @@
+
+  <div>
+    <p-toast key="myKey1"></p-toast>
+  </div>
+      
+    <div class="container">
+      <!-- <mat-card class="title">
+        Sign UP
+      </mat-card> -->
+
+      <mat-radio-group
+      aria-labelledby="example-radio-group-label"
+      class="example-radio-group"
+      [(ngModel)]="type">
+      <mat-card class="example-radio-button" >
+        <mat-radio-button value="student">
+            Register As A Student
+          </mat-radio-button>
+      </mat-card>
+    
+      <mat-card class="example-radio-button">
+        <mat-radio-button value="professor">
+            Register As A Professor
+          </mat-radio-button>
+      </mat-card>
+    </mat-radio-group>
+<!-- Sign UP -->
+<ng-container *ngIf="screenType == 'signup'">
+
+  <mat-card style="min-width: 40%;background-color: rgb(223, 217, 217);margin: 1%;">
+
+    <div class="subtitile">
+      SiGN UP
+    </div>
+
+    <form [formGroup]="signUpForm">
+        <!-- <label for="fname">First Name</label> -->
+        <input type="email" formControlName="email" placeholder="User Name">
+        <!-- <label for="lname">Last Name</label> -->
+        <input type="password" formControlName="password" placeholder="Password">
+
+        <input type="password" formControlName="confirmPassword" placeholder="Confirm Password">
+    </form>
+
+    <div style="text-align: end;margin-top: 3px;">
+      <a (click)="screenType = 'signin'" style="color: blue;">already have an accont? Sign In</a>
+    </div>
+
+    <div class="btn">
+      <button (click)="submit('signup')">Submit</button>
+    </div>
+
+  </mat-card>
+
+</ng-container>
+
+<!-- Login -->
+<ng-container *ngIf="screenType == 'signin'">
+  <mat-card style="min-width: 40%;background-color: rgb(223, 217, 217);margin: 1%;">
+
+    <div class="subtitile">
+      SIGN IN
+    </div>
+
+    <form [formGroup]="loginForm">
+        <!-- <label for="fname">First Name</label> -->
+        <input type="email" formControlName="email"placeholder="User Name">
+        <!-- <label for="lname">Last Name</label> -->
+        <input type="password" formControlName="password" placeholder="Password">
+    </form>
+    <div style="text-align: end;margin-top: 3px;">
+      <a (click)="screenType = 'signup'"  style="color: blue;">New user? Sign Up</a>
+    </div>
+
+    <div class="btn">
+      <button  (click)="submit('signin')">Submit</button>
+    </div>
+
+  </mat-card>
+</ng-container>
+    
+
+  </div>
+    
