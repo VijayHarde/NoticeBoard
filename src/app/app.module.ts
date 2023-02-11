@@ -16,12 +16,17 @@ import {ToastModule} from 'primeng/toast';
 import { PrimengModule } from './primeng.module';
 import { MaterialModule } from './material.module';
 import { HeaderModule } from './header/header.module';
+import { AddNoticeComponent } from './components/add-notice/add-notice.component';
+import { AddClassComponent } from './components/add-class/add-class.component';
+import { AllClassComponent } from './all-class/all-class.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
+    AddNoticeComponent,
+    AddClassComponent,
   ],
   imports: [
     BrowserModule,

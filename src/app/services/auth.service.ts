@@ -8,7 +8,10 @@ import { BehaviorSubject } from 'rxjs';
 export class AuthService {
 
   // private _user = new BehaviorSubject<string | undefined>(undefined);
-  // _userID = new BehaviorSubject<string>('');
+  _userID = new BehaviorSubject<string>('');
+  _userName = new BehaviorSubject<string>('');
+  _userType = new BehaviorSubject<string>('');
+  _studentClass = new BehaviorSubject<string>('');
 
   constructor(private auth:AngularFireAuth) { }
 

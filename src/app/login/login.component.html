@@ -2,13 +2,15 @@
   <div>
     <p-toast key="myKey1"></p-toast>
   </div>
-      
+
+
     <div class="container">
       <!-- <mat-card class="title">
         Sign UP
       </mat-card> -->
 
       <mat-radio-group
+      *ngIf="screenType == 'signup'"
       aria-labelledby="example-radio-group-label"
       class="example-radio-group"
       [(ngModel)]="type">
@@ -34,20 +36,41 @@
     </div>
 
     <form [formGroup]="signUpForm">
+      <input type="text" formControlName="name" placeholder="Name">
+
         <!-- <label for="fname">First Name</label> -->
-        <input type="email" formControlName="email" placeholder="User Name">
+        <input type="email" formControlName="email" placeholder="Email">
+
+      <mat-form-field *ngIf="type == 'student'" style="display: block;background-color: white;" appearance="fill">
+        <mat-label>Select Class</mat-label>
+        <mat-select formControlName="class" name="food">
+          <mat-option *ngFor="let item of allClass$ |async" [value]="item.class">
+            {{item.class}}
+          </mat-option>
+          <ng-container *ngIf="allClass$ |async as data">
+            <mat-option disabled *ngIf="data.length == 0">
+              No Class Found
+            </mat-option>
+          </ng-container>
+        </mat-select>
+      </mat-form-field>
+
         <!-- <label for="lname">Last Name</label> -->
         <input type="password" formControlName="password" placeholder="Password">
-
-        <input type="password" formControlName="confirmPassword" placeholder="Confirm Password">
     </form>
 
     <div style="text-align: end;margin-top: 3px;">
       <a (click)="screenType = 'signin'" style="color: blue;">already have an accont? Sign In</a>
     </div>
 
+    <div *ngIf="isLoading" style="display: flex;justify-content: center;">
+      <mat-spinner ></mat-spinner>
+    </div>
+
     <div class="btn">
-      <button (click)="submit('signup')">Submit</button>
+      <button (click)="submit('signup')">
+        Submit
+      </button>
     </div>
 
   </mat-card>
@@ -70,6 +93,10 @@
     </form>
     <div style="text-align: end;margin-top: 3px;">
       <a (click)="screenType = 'signup'"  style="color: blue;">New user? Sign Up</a>
+    </div>
+
+    <div *ngIf="isLoading" style="display: flex;justify-content: center;">
+      <mat-spinner></mat-spinner>
     </div>
 
     <div class="btn">

@@ -22,6 +22,9 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MatCardModule} from '@angular/material/card';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
 
 
 
@@ -50,7 +53,11 @@ const MaterialComponents = [
   MatPaginatorModule,
   MatIconModule,
   MatSortModule,
-  MatExpansionModule
+  MatExpansionModule,
+  MatCardModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
+  
 ]
 
 @NgModule({

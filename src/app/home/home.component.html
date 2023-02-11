@@ -1,10 +1,14 @@
 
   <!-- Content -->
 
+  <div class="heading ">
+    <h2>Welcome {{username}}</h2>
+  </div>
+
   <div class="center_content">
     <div class="flex-container">
       <div *ngFor="let item of data">
-        <div class="content" [routerLink]="item.navigate">
+        <div class="content" routerLink="{{item.navigate}}">
           <img [src]="item.img_path" height="50%" alt="" />
           <h3>{{ item.text }}</h3>
         </div>

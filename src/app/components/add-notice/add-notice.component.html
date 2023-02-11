@@ -1,0 +1,48 @@
+<h1 mat-dialog-title>Add Notice</h1>
+<div mat-dialog-content>
+
+  <p>What is the heading of the Notice?</p>
+  <mat-form-field style="display: block;" appearance="fill">
+    <mat-label>Enter Heading</mat-label>
+    <input matInput [(ngModel)]="title">
+  </mat-form-field>
+
+  <p>What is the discription of the Notice?</p>
+  <mat-form-field style="display: block;" appearance="fill">
+    <mat-label>Enter Discription</mat-label>
+    <input matInput [(ngModel)]="discription">
+  </mat-form-field>
+
+  <p>Select class for Notice?</p>
+  <!-- <mat-form-field style="display: block;" appearance="fill">
+    <mat-label>Title Heading</mat-label>
+    <input matInput >
+  </mat-form-field> -->
+  <mat-form-field style="display: block;" appearance="fill">
+    <mat-label>Select Class</mat-label>
+    <mat-select [(ngModel)]="class" name="food">
+      <mat-option *ngFor="let item of allClass$ |async" [value]="item.class">
+        {{item.class}}
+      </mat-option>
+      <ng-container *ngIf="allClass$ |async as data">
+        <mat-option disabled *ngIf="data.length == 0">
+          No Class Found
+        </mat-option>
+      </ng-container>
+    </mat-select>
+  </mat-form-field>
+
+  <p>Select expiry date</p>
+  <mat-form-field  style="display: block;" class="example-full-width" appearance="fill">
+    <mat-label>Choose a date</mat-label>
+    <input matInput [(ngModel)]="expiryDate" [matDatepicker]="picker">
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button cdkFocusInitial (click)="onclick()">Ok</button>
+</div>

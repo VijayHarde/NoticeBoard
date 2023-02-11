@@ -1,0 +1,95 @@
+<div class="btn">
+    <button mat-raised-button (click)="addNotice()">
+      <mat-icon>
+        <i class="material-icons">add</i>
+      </mat-icon>
+      Add Notice
+    </button>
+</div>
+
+<!-- <div style="padding: 2%;"> -->
+
+  <!-- <ng-container>
+
+    <mat-accordion class="example-headers-align" multi>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Notice Title
+          </mat-panel-title>
+          <mat-panel-description style="display:flex;justify-content: end;">
+            <mat-icon>edit</mat-icon>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+    
+        <mat-panel-description>
+          This is my discription
+        </mat-panel-description>
+    
+      </mat-expansion-panel>
+    </mat-accordion>
+
+  </ng-container> -->
+
+  
+<!-- </div> -->
+
+<div style="padding:2%">
+
+  <ng-container *ngIf="{class: allNotice$ | async , error:allNoticeError$ | async} as vm">
+    <ng-container *ngIf="!vm.error && vm.class as reports; else loading">
+      <ng-container *ngIf="vm.class.length > 0; else empty">
+        <ng-container *ngFor="let item of vm.class">
+          <mat-accordion style="margin:1%" class="example-headers-align" multi>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  {{item.heading}}
+                </mat-panel-title>
+                <mat-panel-description style="display:flex;justify-content: end;">
+                  <mat-icon style="margin: 1%;" (click)="updateNotice(item)">edit</mat-icon>
+                  <mat-icon  style="margin: 1%;" (click)="deleteNotice(item)">delete</mat-icon>
+
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+          
+              <mat-panel-description>
+                {{item.discription}}
+              </mat-panel-description>
+          
+            </mat-expansion-panel>
+          </mat-accordion>
+          <!-- <mat-card style="margin: 1%;">
+            <mat-card-content>
+              <span>{{item.class}}</span>
+              <mat-icon (click)="deleteClass(item)" style="float: right;margin:1%;">delete</mat-icon>
+              <mat-icon (click)="updateClass(item)" style="float: right;margin:1%;">edit</mat-icon>
+            </mat-card-content>
+            <mat-card-subtitle>Created By - {{item.createdBy || ""}}</mat-card-subtitle>
+          </mat-card>
+         -->
+        </ng-container>
+        </ng-container>
+      </ng-container>
+
+      <mat-card *ngIf="vm.error as error">
+        <mat-card-header>
+          <mat-card-title>Error Occured when loading the data</mat-card-title>
+        </mat-card-header>
+      </mat-card>
+  </ng-container>
+
+  <ng-template #empty>
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>No Data Found</mat-card-title>
+      </mat-card-header>
+    </mat-card>
+  </ng-template>
+
+  <ng-template #loading>
+    <div class="center">
+      <mat-spinner></mat-spinner>
+    </div>
+  </ng-template>
+</div>

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { AddClassComponent } from '../components/add-class/add-class.component';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -6,33 +9,43 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-
-  constructor() { }
+  username = window.localStorage.getItem('username');
+  userClass = window.localStorage.getItem('class');
+  constructor(protected authService:AuthService) { }
 
   data = [
     {
-      text: 'Create Notice',
-      img_path: '/assets/user-details/ViewDetails.png',
-      navigate: './view-details',
+      text: 'Class',
+      img_path: '/assets/writing.png',
+      navigate:'/all-class'
     },
     {
-      text: 'View Notice',
-      img_path: '/assets/user-details/logs.png',
-      navigate: './customer-logs',
+      text: 'Notice',
+      img_path: '/assets/writing.png',
+      navigate:'/all-notice'
     },
-    {
-      text: 'ALL Notice',
-      img_path: '/assets/user-details/block.png',
-      navigate: './block-unblock',
-    },
-    {
-      text: 'My Notice',
-      img_path: '/assets/user-details/subscription.png',
-      navigate: './customer-subscription',
-    },
+    // {
+    //   text: 'Notice Notice',
+    //   img_path: '/assets/writing.png',
+    // }
   ];
 
   ngOnInit(): void {
   }
+
+  // onCall(item:any){
+  //   switch(item.text){
+  //     case 'Add Class':
+  //       this.addClass();
+  //       console.log("Add Class");
+  //       break;
+  //     case 'Add Notice':
+  //       console.log("Add Notice");
+  //       break;
+  //     case 'Notice Notice':
+  //       console.log("Notice Notice");
+  //       break;
+  //   }
+  // }
 
 }

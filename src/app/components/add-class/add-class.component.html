@@ -1,0 +1,12 @@
+<h1 mat-dialog-title>Add Class</h1>
+<div mat-dialog-content>
+  <p>Enter the class name</p>
+  <mat-form-field appearance="fill">
+    <mat-label>Enter class</mat-label>
+    <input [(ngModel)]="className" matInput >
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button cdkFocusInitial (click)="onclick()">Ok</button>
+</div>
